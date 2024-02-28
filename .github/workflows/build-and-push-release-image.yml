@@ -16,8 +16,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: ${{ steps.tagname.outputs.tagname }}
+      
 
       - name: Login to GitHub Packages
         uses: docker/login-action@v1
@@ -32,4 +31,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/alileza/slash:${{ steps.tagname.outputs.tagname }}
+          tags: ghcr.io/alileza/slash:${{ inputs.git_tag }}
